@@ -6,7 +6,7 @@ require SUPPORT + '/lib/textmate'
 require SUPPORT + '/lib/ui'
 require SUPPORT + '/lib/tm/htmloutput'
 
-parsnip = />(>)?(\/[^\/]*\/)([=><])?/
+parsnip = />(>)?(\/[^\/]*\/[a-z]*)([=><])?/
 stdin = STDIN.read
 snip_loc = stdin =~ parsnip
 
@@ -42,33 +42,35 @@ splits = lines.collect{|l|
 
   md =repl.match(match)
 
-  next if md == nil
+  if md != nil
+    col_ctr = md.captures.length    
+    TextMate.exit_show_tool_tip "No group matches found, so no snippet slots created" if col_ctr == 0
+    (md.length-1).downto(1).each{|x|
 
-  col_ctr = md.captures.length    
-  TextMate.exit_show_tool_tip "No group matches found, so no snippet slots created" if col_ctr == 0
-  (md.length-1).downto(1).each{|x|
-    if order == ""
-      ctr = col_ctr
-    else
-      ctr = line_ctr
-    end
-    b = md.begin(x)
-    e = md.end(x)-1
-    fail_softly("a group doesn't match any character(s)") if e < 0 || b < 0
-    if position == "<"
-      repl[b..e] = "$#{ctr}#{repl[b..e]}"
-    elsif position == "="
-      repl[b..e] = "${#{ctr}:#{repl[b..e]}}"
-    else
-      repl[b..e] = "#{repl[b..e]}$#{ctr}"
-    end
-    col_ctr -= 1
-  }
+      if order == nil       
+        ctr = col_ctr
+      else
+        ctr = line_ctr
+      end
+      b = md.begin(x)
+      e = md.end(x)-1
+      fail_softly("a group doesn't match any character(s)") if e < 0 || b < 0
+      if position == "<"
+        repl[b..e] = "$#{ctr}#{repl[b..e]}"
+      elsif position == "="
+        repl[b..e] = "${#{ctr}:#{repl[b..e]}}"
+      else
+        repl[b..e] = "#{repl[b..e]}$#{ctr}"
+      end
+      col_ctr -= 1
+    }
+    line_ctr += 1  
+  end
+  
   col_ctr = 1
-  line_ctr+=1
+    
+
   repl
 }
 
 print splits.join("\n")
-
-
