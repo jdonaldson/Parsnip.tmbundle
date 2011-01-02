@@ -6,18 +6,18 @@ require SUPPORT + '/lib/textmate'
 require SUPPORT + '/lib/ui'
 require SUPPORT + '/lib/tm/htmloutput'
 
-parsnip = />(>)?\{(\/[^\{\}]*\/)\}([=><])?/
+parsnip = />(>)?(\/[^\/]*\/)([=><])?/
 stdin = STDIN.read
 snip_loc = stdin =~ parsnip
 
 
 
 
-def fail_softly(str)
-  TextMate.exit_show_tool_tip 'failed!'
+def fail_softly(err)
+  TextMate.exit_show_tool_tip 'Failed: '+ err
 end
 
-fail_softly(stdin) if (!snip_loc)
+fail_softly("Not a vaid parsnip!") if (!snip_loc)
 
 all, order, match, position = stdin.match(parsnip).to_a
 
@@ -47,14 +47,14 @@ splits = lines.collect{|l|
   col_ctr = md.captures.length    
   TextMate.exit_show_tool_tip "No group matches found, so no snippet slots created" if col_ctr == 0
   (md.length-1).downto(1).each{|x|
-    if order == ">"
+    if order == ""
       ctr = col_ctr
     else
       ctr = line_ctr
     end
     b = md.begin(x)
     e = md.end(x)-1
-    fail_softly if e < 0 || b < 0
+    fail_softly("a group doesn't match any character(s)") if e < 0 || b < 0
     if position == "<"
       repl[b..e] = "$#{ctr}#{repl[b..e]}"
     elsif position == "="
