@@ -78,7 +78,8 @@ will produce
 	${1:x} ${2:x}
 	${1:y} ${2:y} 
 	${1:z} ${2:z}
-	
+
+==Demo==
 As a final demonstration, consider the following selection:
 
 	>/function\((\w),(\w),(\w)\)/>
@@ -92,6 +93,10 @@ After processing with Parsnip, we can quickly add types to the arguments:
 	var f1 = function(x:Float,y:Float,z:Float){...}
 	var f2 = function(a:Int,b:Int,c:Int){...}
 	var f3 = function(d:String,e:String,f:String){...
+
+==Misc==
+Note: It's possible to use extra forward slashes instead of angle brackets for the "stalks":
+e.g. `///(\w)/`
 
 
 

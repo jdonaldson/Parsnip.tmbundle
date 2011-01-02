@@ -6,7 +6,7 @@ require SUPPORT + '/lib/textmate'
 require SUPPORT + '/lib/ui'
 require SUPPORT + '/lib/tm/htmloutput'
 
-parsnip = />(>)?(\/[^\/]*\/[a-z]*)([=><])?/
+parsnip = /(>|\/)(>|\/)?(\/(\\\/|[^\/])*\/[a-z]*)([=><])?/
 stdin = STDIN.read
 snip_loc = stdin =~ parsnip
 
@@ -19,7 +19,7 @@ end
 
 fail_softly("Not a vaid parsnip!") if (!snip_loc)
 
-all, order, match, position = stdin.match(parsnip).to_a
+all, first, order, match, match_interior, position = stdin.match(parsnip).to_a
 
 
 
@@ -33,7 +33,7 @@ stdin.gsub!(parsnip,'')
 lines = stdin.split("\n")
 
 line_ctr = 1
-ctr = [0,0]
+ctr = 1
 col = 1
 
 
@@ -43,17 +43,21 @@ splits = lines.collect{|l|
   md =repl.match(match)
 
   if md != nil
+
     col_ctr = md.captures.length    
     TextMate.exit_show_tool_tip "No group matches found, so no snippet slots created" if col_ctr == 0
+    
     (md.length-1).downto(1).each{|x|
-
+      
       if order == nil       
         ctr = col_ctr
       else
         ctr = line_ctr
       end
+
       b = md.begin(x)
       e = md.end(x)-1
+
       fail_softly("a group doesn't match any character(s)") if e < 0 || b < 0
       if position == "<"
         repl[b..e] = "$#{ctr}#{repl[b..e]}"
