@@ -39,7 +39,7 @@ will produce
 	z$3 z$3
 
 ## Changing the tab stop sequence ##
-You can change the sequence of tab stops by adding another "stalk" to the parsnip:
+You can change the sequence of tab stops by adding another "stem" to the parsnip:
 
 	>>/(\w)\s*(\w)/
 	x x

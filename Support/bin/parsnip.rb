@@ -45,7 +45,7 @@ splits = lines.collect{|l|
   if md != nil
 
     col_ctr = md.captures.length    
-    TextMate.exit_show_tool_tip "No group matches found, so no snippet slots created" if col_ctr == 0
+    fail_softly("No group matches found, so no snippet slots created") if col_ctr == 0
 
     (md.length-1).downto(1).each{|x|
       
