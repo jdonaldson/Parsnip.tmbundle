@@ -1,13 +1,34 @@
 # Parsnip#
 
-Parsnip is a Textmate bundle for creating [snippets](http://manual.macromates.com/en/snippets).  It relies on [regular expression syntax](http://www.regular-expressions.info/reference.html) in order to flexibly specify tab stops and default text.  It also has the ability to intelligently space your code using regular expressions.
-## Intro ##
+Parsnip is a Textmate bundle for creating [snippets](http://manual.macromates.com/en/snippets).  It relies on [regular expression syntax](http://www.regular-expressions.info/reference.html) in order to flexibly specify tab stops and default text.  It also has the ability to intelligently space code.
 
-While Parsnip (uppercase) is the bundle, a *parsnip* is actually a special sequence of characters, similar to a regex. A simple parsnip looks like this:
+## Intelligent Spacing ##
+Intelligent spacing is the simplest, so I'll describe that first.
+
+The main benefit of intelligent spacing comes when you want to align variables, values, and comments in code:
+
+	var x = 4; // a comment goes here
+	var y = 20000; // another comment
+	var foobar = 'sadfasdfasdf'; // one more comment;
+
+After parsing this section with parsnip's pattern match column spacing, we have:
+
+	var x      = 4;              // a comment goes here 
+	var y      = 20000;          // another comment     
+	var foobar = 'sadfasdfasdf'; // one more comment;
+
+Note that the comments were excluded from the column spacing.
+Please also note that this technique only works for languages that have double forward slash comments, and will not work with any inline comments.
+
+
+
+
+## Using parsnips ##
+
+While Parsnip (uppercase) is the bundle, a *parsnip* is actually a special sequence of characters, which is essentially a modified regex. A simple parsnip looks like this:
 `>/(\w+)/`
 *I thought it looked a bit like a [parsnip](http://en.wikipedia.org/wiki/Parsnip)... you may have to use your imagination a little.*
 
-## Using parsnips ##
 The bundle works by looking for a parsnip in a document or selected text. You type the parsnip directly into your document:
 
 	>/(\w)/
@@ -98,23 +119,6 @@ After processing with Parsnip, we can quickly add types to the arguments:
 	var f2 = function(a:Int,b:Int,c:Int){...}
 	var f3 = function(d:String,e:String,f:String){...
 
-
-## Intelligent Spacing ##
-
-Parsnip can provide some nice spacing for comments, etc. in code:
-
-	var x = 4; // a comment goes here
-	var y = 20000; // another comment
-	var foobar = 'sadfasdfasdf'; // one more comment;
-
-After parsing this section with parsnip's pattern match column spacing, we have:
-
-	var x      = 4;              // a comment goes here 
-	var y      = 20000;          // another comment     
-	var foobar = 'sadfasdfasdf'; // one more comment;
-
-Note that the comments were excluded from the column spacing.
-Please also note that this technique only works for languages that have double forward slash comments, and will not work with any inline comments.
 
 ## Misc. ##
 Note: It's possible to use extra forward slashes instead of angle brackets for the "stalks" (e.g. `//(\w)/` instead of `>/(\w)/`).  This makes them just a bit easier to type out.
