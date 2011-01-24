@@ -11,7 +11,7 @@ The main benefit of intelligent spacing comes when you want to align variables, 
 	var y = 20000; // another comment
 	var foobar = 'sadfasdfasdf'; // one more comment;
 
-After parsing this section with parsnip's pattern match column spacing, we have:
+After parsing this section with Parsnip's pattern match column spacing, we have:
 
 	var x      = 4;              // a comment goes here 
 	var y      = 20000;          // another comment     
