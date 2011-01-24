@@ -4,6 +4,11 @@
 <dict>
 	<key>name</key>
 	<string>Parsnip</string>
+	<key>ordering</key>
+	<array>
+		<string>E5C24DA3-A3C9-4E8A-AEAB-1FB71A3DF56C</string>
+		<string>285680B2-22F7-4302-8783-F9044B85C406</string>
+	</array>
 	<key>uuid</key>
 	<string>A516A565-B046-4D4A-8E54-134CB945FCA0</string>
 </dict>

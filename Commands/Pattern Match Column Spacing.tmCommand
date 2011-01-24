@@ -5,18 +5,16 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>parsnip.rb</string>
-	<key>fallbackInput</key>
-	<string>document</string>
+	<string>parspace.rb</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
-	<string>@P</string>
+	<string>$@ </string>
 	<key>name</key>
-	<string>Generate Parsnip Snippet</string>
+	<string>Pattern Match Column Spacing</string>
 	<key>output</key>
-	<string>insertAsSnippet</string>
+	<string>replaceSelectedText</string>
 	<key>uuid</key>
-	<string>E5C24DA3-A3C9-4E8A-AEAB-1FB71A3DF56C</string>
+	<string>285680B2-22F7-4302-8783-F9044B85C406</string>
 </dict>
 </plist>
