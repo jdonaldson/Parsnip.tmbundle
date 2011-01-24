@@ -3,24 +3,21 @@
 Parsnip is a Textmate bundle for creating [snippets](http://manual.macromates.com/en/snippets).  It relies on [regular expression syntax](http://www.regular-expressions.info/reference.html) in order to flexibly specify tab stops and default text.  It also has the ability to intelligently space code.
 
 ## Intelligent Spacing ##
-Intelligent spacing is the simplest, so I'll describe that first.
+Intelligent spacing is the easiest to explain, so I'll describe that first.
 
 The main benefit of intelligent spacing comes when you want to align variables, values, and comments in code:
 
-	var x = 4; // a comment goes here
+	var  x = 4; // a comment goes here
 	var y = 20000; // another comment
-	var foobar = 'sadfasdfasdf'; // one more comment;
+	var foobar = 'sadfasdfasdf'; // one more comment
 
-After parsing this section with Parsnip's pattern match column spacing, we have:
+After parsing this section with Parsnip's pattern match column spacing (CONTROL+COMMAND+SPACE), we have:
 
 	var x      = 4;              // a comment goes here 
 	var y      = 20000;          // another comment     
-	var foobar = 'sadfasdfasdf'; // one more comment;
+	var foobar = 'sadfasdfasdf'; // one more comment
 
-Note that the comments were excluded from the column spacing.
-Please also note that this technique only works for languages that have double forward slash comments, and will not work with any inline comments.
-
-
+Note: comments are excluded from the column spacing, and this technique only works for languages that have double forward slash comments, and will not work with any inline comments.
 
 
 ## Using parsnips ##

@@ -11,7 +11,7 @@
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
-	<string>@P</string>
+	<string>^@p</string>
 	<key>name</key>
 	<string>Generate Parsnip Snippet</string>
 	<key>output</key>

@@ -9,7 +9,7 @@
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
-	<string>$@ </string>
+	<string>^@ </string>
 	<key>name</key>
 	<string>Pattern Match Column Spacing</string>
 	<key>output</key>
