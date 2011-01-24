@@ -3,7 +3,7 @@ SUPPORT = "#{ENV['TM_SUPPORT_PATH']}"
 
 stdin = STDIN.read
 
-res = stdin.split("\n").map{|x| x.scan(/([^\s]+)/)}
+res = stdin.split("\n").map{|x| x.scan(/((\/\/.*)|[^\s]+)/)}
 
 max_length = res.map{|x| x.length}.max
 lengths = (0..max_length).map{|x| res.map{|y| 
@@ -15,11 +15,12 @@ lengths = (0..max_length).map{|x| res.map{|y|
 }.max}
 
 res.map{|x|
+
   lengths.each_index{|idx|
     len = lengths[idx]
       begin
-
         x[idx][0] = x[idx][0].ljust(len,' ')
+        x[idx][1] =''
       rescue Exception => e
       end
     }

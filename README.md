@@ -1,6 +1,6 @@
-# Parsnip #
+# Parsnip#
 
-Parsnip is a Textmate bundle for creating [snippets](http://manual.macromates.com/en/snippets).  It relies on [regular expression syntax](http://www.regular-expressions.info/reference.html) in order to flexibly specify tab stops and default text.
+Parsnip is a Textmate bundle for creating [snippets](http://manual.macromates.com/en/snippets).  It relies on [regular expression syntax](http://www.regular-expressions.info/reference.html) in order to flexibly specify tab stops and default text.  It also has the ability to intelligently space your code using regular expressions.
 ## Intro ##
 
 While Parsnip (uppercase) is the bundle, a *parsnip* is actually a special sequence of characters, similar to a regex. A simple parsnip looks like this:
@@ -97,6 +97,24 @@ After processing with Parsnip, we can quickly add types to the arguments:
 	var f1 = function(x:Float,y:Float,z:Float){...}
 	var f2 = function(a:Int,b:Int,c:Int){...}
 	var f3 = function(d:String,e:String,f:String){...
+
+
+## Intelligent Spacing ##
+
+Parsnip can provide some nice spacing for comments, etc. in code:
+
+	var x = 4; // a comment goes here
+	var y = 20000; // another comment
+	var foobar = 'sadfasdfasdf'; // one more comment;
+
+After parsing this section with parsnip's pattern match column spacing, we have:
+
+	var x      = 4;              // a comment goes here 
+	var y      = 20000;          // another comment     
+	var foobar = 'sadfasdfasdf'; // one more comment;
+
+Note that the comments were excluded from the column spacing.
+Please also note that this technique only works for languages that have double forward slash comments, and will not work with any inline comments.
 
 ## Misc. ##
 Note: It's possible to use extra forward slashes instead of angle brackets for the "stalks" (e.g. `//(\w)/` instead of `>/(\w)/`).  This makes them just a bit easier to type out.
