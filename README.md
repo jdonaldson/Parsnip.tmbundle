@@ -136,7 +136,7 @@ First, we add a small snippet at the top of the line.  The command "fmt 72" is a
 
 (Any command can be used.  However, the selected text is always replaced with the stdout from the command result.  If the command produces no output, then the selected text/document buffer will be erased.  Take care to use the appropriate script commands, and be ready to undo any mistakes).
 
-So, when we invoke the parscript command (CONTROL+COMMAND+C):
+So, when we invoke the parscript command (CONTROL+COMMAND+S):
 	
 	Copyright (c) 2011, Some guy. Redistribution and use in source and binary forms,
  	with or without modification, are permitted provided that the following conditions
