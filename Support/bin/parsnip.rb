@@ -39,16 +39,17 @@ col = 1
 
 splits = lines.collect{|l|
   repl = l * 1
+  
 
-  md =repl.match(match)
-
+  md = repl.match(match)
   if md != nil
 
     col_ctr = md.captures.length    
     fail_softly("No group matches found, so no snippet slots created") if col_ctr == 0
+    x = md.length
 
-    (md.length-1).downto(1).each{|x|
-      
+    (x-1).downto(1){ |x|
+        
       if order == nil       
         ctr = col_ctr
       else
@@ -64,7 +65,7 @@ splits = lines.collect{|l|
         elsif position == "="
           repl[b..e] = "${#{ctr}:#{repl[b..e]}}"
         else
-          repl[b..e] = "#{repl[b..e]}$#{ctr}"
+          repl[b..e] = "#{repl[b..e]}${#{ctr}}"
         end
       end
       col_ctr -= 1

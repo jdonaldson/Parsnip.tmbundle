@@ -1,10 +1,9 @@
 # Parsnip#
 
-Parsnip is a Textmate bundle for creating [snippets](http://manual.macromates.com/en/snippets).  It relies on [regular expression syntax](http://www.regular-expressions.info/reference.html) in order to flexibly specify tab stops and default text.  It also has the ability to intelligently space code.
+Parsnip is a Textmate bundle for creating [snippets](http://manual.macromates.com/en/snippets).  It relies on [regular expression syntax](http://www.regular-expressions.info/reference.html) in order to flexibly specify tab stops and default text.  It also has the ability to intelligently space and code, or to easily pass portions of the document through a script.
 
+	
 ## Intelligent Spacing ##
-Intelligent spacing is the easiest to explain, so I'll describe that first.
-
 The main benefit of intelligent spacing comes when you want to align variables, values, and comments in code:
 
 	var  x = 4; // a comment goes here
@@ -121,5 +120,46 @@ After processing with Parsnip, we can quickly add types to the arguments:
 Note: It's possible to use extra forward slashes instead of angle brackets for the "stalks" (e.g. `//(\w)/` instead of `>/(\w)/`).  This makes them just a bit easier to type out.
 
 
+## Parscript ##
+Parscript is very similar to the default TextMate command Text->Filter-Through-Command menu item.  I find writing special formatting commands, etc. in the document itself feels more natural than using a separate popup window.
 
+
+As an example, consider a long string of text, such as a copyright notice: 
+
+
+	Copyright (c) 2011, Some Guy. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met.  
+
+First, we add a small snippet at the top of the line.  The command "fmt 72" is applied to the string, which attempts to insert hard line breaks at 72 character intervals:
+
+	>/fmt 72/
+	Copyright (c) 2011, Some guy. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met.  
+
+(Any command can be used.  However, the selected text is always replaced with the stdout from the command result.  If the command produces no output, then the selected text/document buffer will be erased.  Take care to use the appropriate script commands, and be ready to undo any mistakes).
+
+So, when we invoke the parscript command (CONTROL+COMMAND+C):
+	
+	Copyright (c) 2011, Some guy. Redistribution and use in source and binary forms,
+ 	with or without modification, are permitted provided that the following conditions
+ 	are met.
+
+We can see the output.  Maybe we want to do something further to dress the comment up as the file header:
+
+	>/(\w)/<
+	Copyright (c) 2011, Some guy. Redistribution and use in source and binary forms,
+	with or without modification, are permitted provided that the following conditions
+	are met.
+	 
+Now we use the parsnip command (CONTROL+COMMAND+P) and we can type in some leading characters (just typing in " * " once)
+	
+	 * Copyright (c) 2011, Some guy. Redistribution and use in source and binary forms,
+	 * with or without modification, are permitted provided that the following conditions
+	 * are met.
+
+And finally adding in some inline comment terminators:
+
+	/*
+	 * Copyright (c) 2011, Some guy. Redistribution and use in source and binary forms,
+	 * with or without modification, are permitted provided that the following conditions
+	 * are met.
+	 */
 
