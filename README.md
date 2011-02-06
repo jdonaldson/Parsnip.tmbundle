@@ -3,23 +3,7 @@
 Parsnip is a Textmate bundle for creating [snippets](http://manual.macromates.com/en/snippets).  It relies on [regular expression syntax](http://www.regular-expressions.info/reference.html) in order to flexibly specify tab stops and default text.  It also has the ability to intelligently space and code, or to easily pass portions of the document through a script.
 
 	
-## Intelligent Spacing ##
-The main benefit of intelligent spacing comes when you want to align variables, values, and comments in code:
-
-	var  x = 4; // a comment goes here
-	var y = 20000; // another comment
-	var foobar = 'sadfasdfasdf'; // one more comment
-
-After parsing this section with Parsnip's pattern match column spacing (CONTROL+COMMAND+SPACE), we have:
-
-	var x      = 4;              // a comment goes here 
-	var y      = 20000;          // another comment     
-	var foobar = 'sadfasdfasdf'; // one more comment
-
-Note: comments are excluded from the column spacing, and this technique only works for languages that have double forward slash comments, and will not work with any inline comments.
-
-
-##Parsnip##
+##Parsnips##
 
 While Parsnip (uppercase) is the bundle, a *parsnip* is actually a special sequence of characters, which is essentially a modified regex. A simple parsnip looks like this:
 `>/(\w+)/`
@@ -162,4 +146,21 @@ And finally adding in some inline comment terminators:
 	 * with or without modification, are permitted provided that the following conditions
 	 * are met.
 	 */
+	
+## Intelligent Spacing ##
+The main benefit of intelligent spacing comes when you want to align variables, values, and comments in code:
+
+	var  x = 4; // a comment goes here
+	var y = 20000; // another comment
+	var foobar = 'sadfasdfasdf'; // one more comment
+
+After parsing this section with Parsnip's pattern match column spacing (CONTROL+COMMAND+SPACE), we have:
+
+	var x      = 4;              // a comment goes here 
+	var y      = 20000;          // another comment     
+	var foobar = 'sadfasdfasdf'; // one more comment
+
+Note: comments are excluded from the column spacing, and this technique only works for languages that have double forward slash comments, and will not work with any inline comments.
+	
+	
 
