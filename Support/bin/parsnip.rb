@@ -6,7 +6,7 @@ require SUPPORT + '/lib/textmate'
 require SUPPORT + '/lib/ui'
 require SUPPORT + '/lib/tm/htmloutput'
 
-parsnip = /(>|\/)(>|\/)?(\/(\\\/|[^\/\n])*\/[a-z]*)([=><])?/
+parsnip = /^(>|\/)(>|\/)?(\/(\\\/|[^\/\n])*\/[a-z]*)([=><])?\s*$/
 stdin = STDIN.read
 snip_loc = stdin =~ parsnip
 

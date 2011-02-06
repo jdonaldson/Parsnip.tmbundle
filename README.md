@@ -25,7 +25,7 @@ While Parsnip (uppercase) is the bundle, a *parsnip* is actually a special seque
 `>/(\w+)/`
 *I thought it looked a bit like a [parsnip](http://en.wikipedia.org/wiki/Parsnip)... you may have to use your imagination a little.*
 
-The bundle works by looking for a parsnip in a document or selected text. You type the parsnip directly into your document:
+The bundle works by looking for a parsnip in a document or selected text. The parsnip must be the only characters on the line.  You type the parsnip directly into your document:
 
 	>/(\w)/
 	x x
@@ -129,7 +129,7 @@ As an example, consider a long string of text, such as a copyright notice:
 
 	Copyright (c) 2011, Some Guy. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met.  
 
-First, we add a small snippet at the top of the line.  The command "fmt 72" is applied to the string, which attempts to insert hard line breaks at 72 character intervals:
+First, we add a small snippet at the top of the line.  The parscript must be the only characters on the line. In this case, the command "fmt 72" is applied to the string, which attempts to insert hard line breaks at 72 character intervals:
 
 	>/fmt 72/
 	Copyright (c) 2011, Some guy. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met.  

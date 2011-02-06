@@ -5,15 +5,15 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>parconstrain.rb</string>
+	<string>parscript.rb</string>
 	<key>fallbackInput</key>
 	<string>document</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
-	<string>^@c</string>
+	<string>^@s</string>
 	<key>name</key>
-	<string>Pattern Constrain</string>
+	<string>Pattern Script</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>uuid</key>
