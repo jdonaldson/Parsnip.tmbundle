@@ -1,4 +1,4 @@
-# Parsnip#
+# The Parsnip Bundle#
 
 Parsnip is a Textmate bundle for creating [snippets](http://manual.macromates.com/en/snippets).  It relies on [regular expression syntax](http://www.regular-expressions.info/reference.html) in order to flexibly specify tab stops and default text.  It also has the ability to intelligently space and code, or to easily pass portions of the document through a script.
 
@@ -19,7 +19,7 @@ After parsing this section with Parsnip's pattern match column spacing (CONTROL+
 Note: comments are excluded from the column spacing, and this technique only works for languages that have double forward slash comments, and will not work with any inline comments.
 
 
-## Using parsnips ##
+##Parsnip##
 
 While Parsnip (uppercase) is the bundle, a *parsnip* is actually a special sequence of characters, which is essentially a modified regex. A simple parsnip looks like this:
 `>/(\w+)/`
@@ -55,7 +55,7 @@ will produce
 	y$2 y$2 
 	z$3 z$3
 
-## Changing the tab stop sequence ##
+### Changing the tab stop sequence ###
 You can change the sequence of tab stops by adding another "stem" to the parsnip:
 
 	>>/(\w)\s*(\w)/
@@ -71,7 +71,7 @@ will produce
 	z$1 z$2
 
 
-## Changing the insertion behavior at tab stops ##
+### Changing the insertion behavior at tab stops ###
 You can also change the insert location of the tab stop by adding a "<" character to the end of the parsnip:
 
 	>>/(\w)\s*(\w)/<
@@ -100,7 +100,7 @@ will produce
 	${1:y} ${2:y} 
 	${1:z} ${2:z}
 
-## Demo ##
+### Demo ###
 As a final demonstration, consider the following selection:
 
 	>/function\((\w),(\w),(\w)\)/>
@@ -116,7 +116,7 @@ After processing with Parsnip, we can quickly add types to the arguments:
 	var f3 = function(d:String,e:String,f:String){...
 
 
-## Misc. ##
+### Misc. ###
 Note: It's possible to use extra forward slashes instead of angle brackets for the "stalks" (e.g. `//(\w)/` instead of `>/(\w)/`).  This makes them just a bit easier to type out.
 
 
